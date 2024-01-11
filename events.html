@@ -1,0 +1,68 @@
+// notes : javasvript me jitne bhi events hote hai wo sequently run krta hai
+// javacript ek sequently run language 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trial</title>
+</head>
+<body style="background-color: #414141;color:aliceblue ;">
+    <h2>Amaxing images</h2>
+    <div> 
+        <ul id="images">
+        <li><img widht="200px" id ="nothing" src="https://cdn.pixabay.com/photo/2015/09/03/08/10/children-920131_640.jpg" alt=""></li>
+        <li><img widht="200px" id ="girl" src ="https://cdn.pixabay.com/photo/2016/11/08/05/32/rice-1807547_640.jpg" alt=""></li>
+        <li><img widht="20px" id ="women" src ="https://cdn.pixabay.com/photo/2015/06/22/08/40/child-817373_1280.jpg"alt=""></li>
+        <li><img width ="2000px" id ="sidewall" src="https://cdn.pixabay.com/photo/2019/06/29/01/24/kids-4305233_640.jpg" slt=""></li>
+        <li><a style="color: antiquewhite;" href="https://google.com" id="google"></a> Google</a></li>
+    </ul>
+    </div>
+    <button>Change color just by hovering your mouse over me</button>
+
+</body>
+<script>
+    // document.getElementById("nothing").onclick=function(){
+    //     alert("bacha ko clik kiya gya hai")
+    // }
+
+    // we should use event listner insted of onclick coz onclick may have problem
+
+    // document.getElementById("images").addEventListener( 'click', function(bubble){
+    //     console.log("clicked inside the ul");
+    //     alert("cliscked inside the ul")
+    // },false)
+
+    // document.getElementById("nothing").addEventListener( 'click', function(bubble){
+    //     console.log("clicked on the  1st picture");
+    //     bubble.stopPropagation()
+    //     alert("banda  par click kiy hai")
+    // },false)
+    // document.getElementById("google").addEventListener('click',function(params) {
+    //     params.preventDefault();
+    //     console.log("google clicked");
+        
+        
+    // },false)
+
+    //  for removing any item from the list after clicking
+    // document.querySelector('#images').addEventListener('click' ,function (params) {
+    //     console.log(params.target)
+    //     let removeit= params.target.parentNode
+    //     removeit.remove()
+        
+    // })
+
+    const btn = document.querySelector("button");
+
+function random(number) {
+  return Math.floor(Math.random() * (number + 1));
+}
+
+btn.addEventListener("mouseover", () => {
+  const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+  document.body.style.backgroundColor = rndCol;
+});
+
+</script>
+</html>

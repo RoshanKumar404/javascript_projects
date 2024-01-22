@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Example</title>
+    
+</head>
+<body style="background-color: black;  color:beige ">
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card img {
+            max-width: 200px;
+            height: 200px;
+            margin-bottom: 10px;
+            border-radius: 75px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-right: 10px;
+        }
+
+        .body{
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+    </style>
+<script>
+    let ApiData;
+    let apiUrl = 'https://api.github.com/users/RoshanKumar404';
+    const request = new XMLHttpRequest();
+
+    request.open('GET', apiUrl);
+    request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                ApiData = JSON.parse(request.responseText);
+
+                
+                const card = document.createElement('div');
+                card.className = 'card';
+                // card.innerHTML = "<h2>Profile</h2>";
+                document.body.appendChild(card);
+                
+                const button = document.createElement('button');
+                button.textContent = "Profile";
+                button.style="background-color: black;  color:beige "
+                document.body.appendChild(button);
+
+                
+                const details = document.createElement('div');
+                details.className = 'details';
+
+                card.appendChild(details);
+
+                const image=document.createElement('img');
+                image.className='img'
+              
+                image.alt=`This is Mr. ${ApiData.name}'s profile`
+                card.appendChild(image)
+
+                
+                button.addEventListener("click", function (event) {
+                    image.src=ApiData.avatar_url
+                    details.innerHTML = `<h2>Here you will get the details.</h2>
+                                            <p>Name: ${ApiData.name}</p>
+                                          <p>Location: ${ApiData.location}</p>
+                                          <p>Public Repos: ${ApiData.public_repos}</p>
+                                          `
+                });
+            } else {
+                console.error('Request failed with status ' + request.status);
+            }
+        }
+    };
+
+    request.send();
+</script>
+
+</body>
+</html>
